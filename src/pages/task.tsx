@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Container } from "@/components/ui/container"
-import { FileText, Database, Users, ShoppingCart, Mail } from "lucide-react"
+import { FileText, Database, ShoppingCart, Mail } from "lucide-react"
 
 export function TaskPage() {
   return (

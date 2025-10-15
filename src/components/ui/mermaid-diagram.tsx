@@ -137,6 +137,7 @@ export function MermaidDiagram({ chart, className = '' }: MermaidDiagramProps) {
     // Принудительно сбрасываем конфигурацию Mermaid
     mermaid.initialize({
       startOnLoad: false,
+      securityLevel: 'loose',
       theme: themeConfig.theme,
       themeVariables: themeConfig.themeVariables,
       // Настройки для ER диаграмм
@@ -191,6 +192,9 @@ export function MermaidDiagram({ chart, className = '' }: MermaidDiagramProps) {
         if (!isMounted) return
         
         console.error('Ошибка рендеринга Mermaid диаграммы:', error)
+        console.log('Проблемная диаграмма:', chart)
+        console.log('Тип ошибки:', error.constructor.name)
+        console.log('Стек ошибки:', error.stack)
         setHasError(true)
         setIsLoading(false)
         if (chartRef.current) {

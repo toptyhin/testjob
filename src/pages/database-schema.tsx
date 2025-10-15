@@ -7,87 +7,87 @@ import { Database, Table as TableIcon, Key, Hash } from "lucide-react"
 export function DatabaseSchemaPage() {
   const erdDiagram = `erDiagram
     CATEGORIES {
-        bigint id PK "Уникальный идентификатор категории"
-        varchar name "Наименование категории"
-        bigint parent_id FK "Идентификатор родительской категории"
-        tinyint level "Уровень вложенности"
-        varchar path "Полный путь категории"
-        int sort_order "Порядок сортировки"
-        boolean is_active "Активна ли категория"
-        timestamp created_at "Дата создания"
-        timestamp updated_at "Дата обновления"
+        bigint id PK
+        varchar name
+        bigint parent_id FK
+        tinyint level
+        varchar path
+        int sort_order
+        boolean is_active
+        timestamp created_at
+        timestamp updated_at
     }
     
     ITEMS {
-        bigint id PK "Уникальный идентификатор товара"
-        varchar name "Наименование товара"
-        text description "Описание товара"
-        decimal price "Цена товара"
-        int quantity "Количество на складе"
-        varchar sku UK "Артикул товара"
-        varchar barcode UK "Штрих-код товара"
-        decimal weight "Вес товара в кг"
-        varchar dimensions "Размеры товара"
-        boolean is_active "Активен ли товар"
-        timestamp created_at "Дата создания"
-        timestamp updated_at "Дата обновления"
+        bigint id PK
+        varchar name
+        text description
+        decimal price
+        int quantity
+        varchar sku UK
+        varchar barcode UK
+        decimal weight
+        varchar dimensions
+        boolean is_active
+        timestamp created_at
+        timestamp updated_at
     }
     
     ITEM_CATEGORIES {
-        bigint id PK "Уникальный идентификатор связи"
-        bigint item_id FK "Идентификатор товара"
-        bigint category_id FK "Идентификатор категории"
-        int sort_order "Порядок сортировки товара в категории"
-        timestamp created_at "Дата создания связи"
+        bigint id PK
+        bigint item_id FK
+        bigint category_id FK
+        int sort_order
+        timestamp created_at
     }
     
     CUSTOMERS {
-        bigint id PK "Уникальный идентификатор клиента"
-        varchar name "Наименование клиента"
-        varchar contact_person "Контактное лицо"
-        varchar email UK "Email адрес"
-        varchar phone "Телефон"
-        text address "Адрес"
-        varchar city "Город"
-        varchar postal_code "Почтовый индекс"
-        varchar country "Страна"
-        varchar tax_id "Налоговый номер"
-        boolean is_active "Активен ли клиент"
-        timestamp created_at "Дата создания"
-        timestamp updated_at "Дата обновления"
+        bigint id PK
+        varchar name
+        varchar contact_person
+        varchar email UK
+        varchar phone
+        text address
+        varchar city
+        varchar postal_code
+        varchar country
+        varchar tax_id
+        boolean is_active
+        timestamp created_at
+        timestamp updated_at
     }
     
     ORDERS {
-        bigint id PK "Уникальный идентификатор заказа"
-        bigint customer_id FK "Идентификатор клиента"
-        varchar order_number UK "Номер заказа"
-        timestamp order_date "Дата заказа"
-        enum status "Статус заказа"
-        decimal total_amount "Общая сумма заказа"
-        decimal discount_amount "Сумма скидки"
-        decimal tax_amount "Сумма налога"
-        decimal final_amount "Итоговая сумма к оплате"
-        text shipping_address "Адрес доставки"
-        text billing_address "Адрес для выставления счета"
-        text notes "Примечания к заказу"
-        timestamp created_at "Дата создания"
-        timestamp updated_at "Дата обновления"
+        bigint id PK
+        bigint customer_id FK
+        varchar order_number UK
+        timestamp order_date
+        enum status
+        decimal total_amount
+        decimal discount_amount
+        decimal tax_amount
+        decimal final_amount
+        text shipping_address
+        text billing_address
+        text notes
+        timestamp created_at
+        timestamp updated_at
     }
     
     ORDER_ITEMS {
-        bigint id PK "Уникальный идентификатор позиции заказа"
-        bigint order_id FK "Идентификатор заказа"
-        bigint item_id FK "Идентификатор товара"
-        int quantity "Количество товара в заказе"
-        decimal unit_price "Цена за единицу на момент заказа"
-        decimal total_price "Общая стоимость позиции"
-        decimal discount_percent "Процент скидки на позицию"
-        decimal discount_amount "Сумма скидки на позицию"
-        timestamp created_at "Дата создания"
+        bigint id PK
+        bigint order_id FK
+        bigint item_id FK
+        int quantity
+        decimal unit_price
+        decimal total_price
+        decimal discount_percent
+        decimal discount_amount
+        timestamp created_at
     }
 
     %% Связи между таблицами
-    CATEGORIES ||--o{ CATEGORIES : "parent_id (самосвязь)"
+    CATEGORIES ||--o{ CATEGORIES : "parent_id"
     CATEGORIES ||--o{ ITEM_CATEGORIES : "category_id"
     ITEMS ||--o{ ITEM_CATEGORIES : "item_id"
     CUSTOMERS ||--o{ ORDERS : "customer_id"

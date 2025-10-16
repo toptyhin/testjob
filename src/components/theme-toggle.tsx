@@ -17,7 +17,7 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       title={theme === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему'}
     >
-      {theme === 'light' ? <Moon className="h-4 w-4 text-foreground" /> : <Sun className="h-4 w-4 text-foreground" />}
+      {theme === 'light' ? <Moon className="h-4 w-4 text-muted-foreground" /> : <Sun className="h-4 w-4 text-muted-foreground" />}
       <span className="sr-only">
         {theme === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему'}
       </span>

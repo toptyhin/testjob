@@ -190,11 +190,6 @@ export function MermaidDiagram({ chart, className = '' }: MermaidDiagramProps) {
         }
       }).catch((error) => {
         if (!isMounted) return
-        
-        console.error('Ошибка рендеринга Mermaid диаграммы:', error)
-        console.log('Проблемная диаграмма:', chart)
-        console.log('Тип ошибки:', error.constructor.name)
-        console.log('Стек ошибки:', error.stack)
         setHasError(true)
         setIsLoading(false)
         if (chartRef.current) {
@@ -227,9 +222,9 @@ export function MermaidDiagram({ chart, className = '' }: MermaidDiagramProps) {
           disabled={zoomLevel <= 0.3}
           className="h-8 w-8 p-0"
         >
-          <ZoomOut className="h-4 w-4 text-foreground" />
+          <ZoomOut className="h-4 w-4 text-muted-foreground" />
         </Button>
-        <div className="flex items-center px-2 text-sm font-medium min-w-[60px] justify-center">
+        <div className="flex items-center px-2 text-sm font-medium min-w-[60px] justify-center text-muted-foreground">
           {Math.round(zoomLevel * 100)}%
         </div>
         <Button
@@ -239,7 +234,7 @@ export function MermaidDiagram({ chart, className = '' }: MermaidDiagramProps) {
           disabled={zoomLevel >= 3}
           className="h-8 w-8 p-0"
         >
-          <ZoomIn className="h-4 w-4 text-foreground" />
+          <ZoomIn className="h-4 w-4 text-muted-foreground" />
         </Button>
         <Button
           variant="outline"
@@ -247,7 +242,7 @@ export function MermaidDiagram({ chart, className = '' }: MermaidDiagramProps) {
           onClick={handleResetZoom}
           className="h-8 w-8 p-0"
         >
-          <RotateCcw className="h-4 w-4 text-foreground" />
+          <RotateCcw className="h-4 w-4 text-muted-foreground" />
         </Button>
       </div>
       )}

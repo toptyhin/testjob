@@ -16,11 +16,11 @@ export function TaskPage() {
         </div>
 
         {/* Основная информация о задании */}
-        <Card className="mb-6">
+        <Card className="mb-6 text-primary">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <FileText className="h-5 w-5 text-primary" />
-              Общая информация
+              <p>Общая информация</p>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -32,7 +32,7 @@ export function TaskPage() {
               <h3 className="font-semibold mb-2">Куда отправлять:</h3>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground">m.grishina@i-t-p.pro</span>
+                <span className="text-muted-foreground">@EMAIL_HERE</span>
               </div>
             </div>
             <div>
@@ -47,7 +47,7 @@ export function TaskPage() {
         </Card>
 
         {/* Задание 1: Схема БД */}
-        <Card className="mb-6">
+        <Card className="mb-6 text-primary">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Database className="h-5 w-5 text-primary" />
@@ -76,9 +76,9 @@ export function TaskPage() {
                   <p className="text-muted-foreground text-sm mb-2">
                     Необходимо хранить данные о категориях товара, при этом сами категории могут иметь неограниченный уровень вложенности
                   </p>
-                  <div className="bg-muted p-3 rounded-lg">
+                  <div className="bg-muted-foreground p-3 rounded-lg text-sidebar">
                     <p className="text-sm font-medium mb-2">Пример дерева категорий:</p>
-                    <pre className="text-xs text-muted-foreground whitespace-pre-wrap">
+                    <pre className="text-xs whitespace-pre-wrap">
 {`Бытовая техника
   Стиральные машины
   Холодильники
@@ -121,7 +121,7 @@ export function TaskPage() {
         </Card>
 
         {/* Задание 2: SQL запросы */}
-        <Card className="mb-6">
+        <Card className="mb-6 text-primary">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <ShoppingCart className="h-5 w-5 text-primary" />
@@ -137,7 +137,7 @@ export function TaskPage() {
               
               <div className="border-l-4 border-primary pl-4">
                 <h4 className="font-medium mb-1">2.2. Найти количество дочерних элементов первого уровня вложенности для категорий номенклатуры</h4>
-                <div className="bg-muted p-3 rounded-lg mt-2">
+                <div className="bg-muted-foreground p-3 rounded-lg mt-2 text-sidebar">
                   <p className="text-sm font-medium mb-2">Пример:</p>
                   <div className="overflow-x-auto">
                     <table className="w-full text-xs">
@@ -194,7 +194,7 @@ export function TaskPage() {
         </Card>
 
         {/* Результат выполнения */}
-        <Card>
+        <Card className="text-primary">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <FileText className="h-5 w-5 text-primary" />

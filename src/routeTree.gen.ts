@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TaskRouteImport } from './routes/task'
+import { Route as QueriesRouteImport } from './routes/queries'
 import { Route as DatabaseSchemaRouteImport } from './routes/database-schema'
 import { Route as IndexRouteImport } from './routes/index'
 
 const TaskRoute = TaskRouteImport.update({
   id: '/task',
   path: '/task',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueriesRoute = QueriesRouteImport.update({
+  id: '/queries',
+  path: '/queries',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DatabaseSchemaRoute = DatabaseSchemaRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/database-schema': typeof DatabaseSchemaRoute
+  '/queries': typeof QueriesRoute
   '/task': typeof TaskRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/database-schema': typeof DatabaseSchemaRoute
+  '/queries': typeof QueriesRoute
   '/task': typeof TaskRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/database-schema': typeof DatabaseSchemaRoute
+  '/queries': typeof QueriesRoute
   '/task': typeof TaskRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/database-schema' | '/task'
+  fullPaths: '/' | '/database-schema' | '/queries' | '/task'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/database-schema' | '/task'
-  id: '__root__' | '/' | '/database-schema' | '/task'
+  to: '/' | '/database-schema' | '/queries' | '/task'
+  id: '__root__' | '/' | '/database-schema' | '/queries' | '/task'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DatabaseSchemaRoute: typeof DatabaseSchemaRoute
+  QueriesRoute: typeof QueriesRoute
   TaskRoute: typeof TaskRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/task'
       fullPath: '/task'
       preLoaderRoute: typeof TaskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queries': {
+      id: '/queries'
+      path: '/queries'
+      fullPath: '/queries'
+      preLoaderRoute: typeof QueriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/database-schema': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DatabaseSchemaRoute: DatabaseSchemaRoute,
+  QueriesRoute: QueriesRoute,
   TaskRoute: TaskRoute,
 }
 export const routeTree = rootRouteImport

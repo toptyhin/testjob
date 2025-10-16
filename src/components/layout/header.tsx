@@ -1,31 +1,35 @@
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Link } from "@tanstack/react-router"
+import { ExternalLink } from "lucide-react"
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto max-w-4xl px-3 sm:px-4 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1200px] px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex h-12 items-center justify-between">
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-6 text-sidebar-primary">
             <Link 
               to="/" 
-              className="text-sm font-medium transition-colors hover:text-primary [&.active]:text-primary"
+              className="text-sm font-medium"
             >
               Главная
             </Link>
             <Link 
               to="/database-schema" 
-              className="text-sm font-medium transition-colors hover:text-primary [&.active]:text-primary"
+              className="text-sm font-medium"
             >
               База данных
             </Link>
-            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link 
+              to="/queries" 
+              className="text-sm font-medium"
+            >
               Запросы
-            </a>
-            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">
-              Документация
+            </Link>
+            <a href="https://github.com/toptyhin/testjob" className="text-sm font-medium hover:text-primary transition-colors flex items-center">
+              GitHub <ExternalLink className="h-3 w-3 ml-1" />
             </a>
           </nav>
 
